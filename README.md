@@ -1,6 +1,6 @@
 # RIF Relaying Services SDK sample dApp
 
-This is a sample dApp to showcase how users can submit relayed transactions to the RSK blockchain using RIF Relay SDK. You will need to connect to the dApp with Metamask but only for signing transactions with the account that controls your Smart Wallets.
+This is a sample dApp to showcase how users can submit relayed transactions to the RSK blockchain using [RIF Relay SDK](https://github.com/infuy/relaying-services-sdk). You will need to connect to the dApp with MetaMask but only for signing transactions with the account that controls the Smart Wallets.
 
 See [RIF Relay](https://github.com/rsksmart/rif-relay) project.
 
@@ -9,7 +9,7 @@ See [RIF Relay](https://github.com/rsksmart/rif-relay) project.
 
 * [NodeJS Version v12.18.3 or higher](https://nodejs.org/en/download/).
 * [RSKj Node Running](https://github.com/rsksmart/rskj).
-* [RIF Relay Contract Contracts](https://github.com/anarancio/rif-relay-contracts) deployed.
+* [RIF Relay Contract](https://github.com/anarancio/rif-relay-contracts) deployed.
 * [Current Token Allowed](https://github.com/anarancio/rif-relay-contracts#allowing-tokens).
 * [RIF Relay Server](https://github.com/infuy/rif-relay-server) running and registered.
 
@@ -38,6 +38,26 @@ REACT_APP_RIF_RELAY_CHAIN_ID=33
 REACT_APP_RIF_RELAY_GAS_PRICE_FACTOR_PERCENT=0
 REACT_APP_RIF_RELAY_LOOKUP_WINDOW_BLOCKS=1e5
 REACT_APP_RIF_RELAY_PREFERRED_RELAYS=http://localhost:8090
+```
+
+To retrieve the value of `REACT_APP_CONTRACTS_RELAY_WORKER`, please call the `/getaddr` API against a running [rif-relay-server](https://github.com/infuy/rif-relay-server) instance and use the field `relayWorkerAddress` from the response.
+
+E.g.:
+```bash
+curl http://localhost:8090/getaddr
+```
+The response has the following format:
+```json
+{
+  "relayWorkerAddress": "0x74105590d404df3f384a099c2e55135281ca6b40",
+  "relayManagerAddress": "0x4a6a175c1140f01679525ca3612364f5384cde46",
+  "relayHubAddress": "0x66Fa9FEAfB8Db66Fe2160ca7aEAc7FC24e254387",
+  "minGasPrice": "65164000",
+  "chainId": "31",
+  "networkId": "31",
+  "ready": true,
+  "version": "2.0.1"
+}
 ```
 
 2. Open a terminal in the sample dApp project root and run
